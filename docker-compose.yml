@@ -1,0 +1,17 @@
+version: "3"
+services:   
+  mongodb-backup:
+    build: .
+    image: mcmoe/mongodb-backup
+    environment:
+      MONGODB_HOST: "mongodb.host"  # the host/ip of your mongodb database
+      MONGODB_PORT: 27017           # the port number of your mongodb database 
+      # MONGODB_USER: "admin"       # the username of your mongodb database. If MONGODB_USER is empty while MONGODB_PASS is not, the image will use admin as the default username
+      # MONGODB_PASS: "password"    # the password of your mongodb database      
+      # MONGODB_DB                  # the database name to dump. If not specified, it will dump all the databases
+      # EXTRA_OPTS                  # the extra options to pass to mongodump command
+      # CRON_TIME                   # the interval of cron job to run mongodump. `0 0 * * *` by default, which is every day at 00:00
+      # MAX_BACKUPS                 # the number of backups to keep. When reaching the limit, the old backup will be discarded. No limit, by default
+      INIT_BACKUP: "true"           # if set, create a backup when the container launched
+    volumes:
+      - ${HOME}/backup:/backup
