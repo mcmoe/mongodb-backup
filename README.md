@@ -1,7 +1,5 @@
 # mongodb-backup
 
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
-
 This image runs mongodump to backup data using cronjob to folder `/backup`
 
 ## Usage:
@@ -14,10 +12,10 @@ This image runs mongodump to backup data using cronjob to folder `/backup`
         --volume host.folder:/backup
         tutum/mongodb-backup
 
-Moreover, if you link `tutum/mongodb-backup` to a mongodb container(e.g. `tutum/mongodb`) with an alias named mongodb, this image will try to auto load the `host`, `port`, `user`, `pass` if possible.
+Moreover, if you link `mcmoe/mongodb-backup` to a mongodb container(e.g. `mcmoe/mongodb`) with an alias named mongodb, this image will try to auto load the `host`, `port`, `user`, `pass` if possible.
 
-    docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" --name mongodb tutum/mongodb
-    docker run -d --link mongodb:mongodb -v host.folder:/backup tutum/mongodb-backup
+    docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS="mypass" --name mongodb mcmoe/mongodb
+    docker run -d --link mongodb:mongodb -v host.folder:/backup mcmoe/mongodb-backup
 
 ## Parameters
 
